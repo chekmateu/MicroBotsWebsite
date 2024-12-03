@@ -1,0 +1,179 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 60px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #555;
+    margin-top: 20px;
+}
+
+h3 {
+    font-size: 1.3em;
+    color: #555;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.video-container {
+    margin: 20px 0;
+    text-align: left;
+}
+
+select {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+video {
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Wrap the button containers in a flexbox parent */
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+/* General button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Alignment-specific container classes */
+.button-container {
+    margin: 0;
+}
+
+/* Ensure buttons are aligned properly */
+.button-container .button {
+    width: auto; /* Prevent button size issues */
+}
+
+.button-container.left {
+    text-align: left;
+}
+
+.button-container.right {
+    text-align: right;
+}
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    font-size: 1.3em;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo and links container */
+.navbar .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adds space between logo and dropdown */
+}
+
+/* Navbar links */
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #0056b3;
+}
+
+/* Dropdown menu */
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    font-size: 0.8em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.navbar .dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}

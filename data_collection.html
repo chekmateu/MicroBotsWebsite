@@ -1,0 +1,67 @@
+<!-- templates/data_collection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">MicroBot Project</div>
+            <div class="dropdown">
+                <a href="#">Sections ▼</a>
+                <div class="dropdown-menu">
+                    <a href="introduction.html">Introduction</a>
+                    <a href="data_collection.html">Data Collection</a>
+                    <a href="results.html">Results</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Modeling Superparamagnetic Micro-Robots for Non-Invasive Surgical Procedures</h1>
+        <h2>Data Collection</h2>
+        <p>
+            We collected data on the superparamagnetic micro-robots by applying a magnetic field of varying strength 
+            in milliteslas. 
+        </p>
+        <h3>Microrobot Videos</h3>
+        <div class="video-container">
+            <label for="videoSelector">Select a video to view:</label>
+            <select id="videoSelector">
+                <option value="20mT.mp4">20mT</option>
+                <option value="25mT.mp4">25mT</option>
+                <option value="30mT.mp4">30mT</option>
+                <option value="35mT.mp4">35mT</option>
+                <option value="Square.mp4">Square</option>
+            </select>
+            <video id="videoPlayer" controls>
+                <source src="static/videos/20mT.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="button-row">
+            <div class="button-container left">
+                <a href="introduction.html" class="button">◄ Back to Introduction</a>
+            </div>
+            <div class="button-container right">
+                <a href="results.html" class="button">Proceed to Conclusion ►</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const videoSelector = document.getElementById('videoSelector');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        videoSelector.addEventListener('change', (event) => {
+            const selectedVideo = event.target.value;
+            videoPlayer.src = `static/videos/${selectedVideo}`;
+            videoPlayer.load();
+        });
+    </script>
+</body>
+</html>

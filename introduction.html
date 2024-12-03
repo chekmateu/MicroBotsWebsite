@@ -1,0 +1,64 @@
+<!-- templates/introduction.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">MicroBot Project</div>
+            <div class="dropdown">
+                <a href="#">Sections ▼</a>
+                <div class="dropdown-menu">
+                    <a href="introduction.html">Introduction</a>
+                    <a href="data_collection.html">Data Collection</a>
+                    <a href="results.html">Results</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Modeling Superparamagnetic Micro-Robots for Non-Invasive Surgical Procedures</h1>
+        <h2>Introduction</h2>
+        <p>
+            According to the National Library of Medicine, there have been approximately 314 acute myocardial infarctions or 
+            heart attacks per 100,000 hospitalizations in the United States since 2001. On top of this, the Centers for Disease 
+            Control and Prevention (CDC) notes that more than 765,000 people in the United States are victims of strokes 
+            every year. At the root of both of these pathological phenomena is the formation of life-threatening circulatory 
+            thromboses, which generate dense fibrin clots that occlude the body’s capacity to efficiently and effectively 
+            transport oxygenated blood to its vital organs. The solution our group poses to diminish this problem are 
+            MicroBots, a cutting-edge technological approach that implements micro-scale colloidal particles that can be 
+            actuated using an external magnetic field to drive to the site of an internal blood clot and lyse the heart 
+            attack or stroke before it can fully develop in the body! This biological and biomedical problem carries both 
+            intellectual and social merit, providing scientists and physicians a pipeline for future research on the use of 
+            microscopic materials within the tortuous environments of the human body system. Also, this biological problem 
+            is pertinent to populations such as that of the African American community, who are more hereditarily predisposed 
+            to clot-causing diseases such as sickle cell disease according to the American Society of Hematology. Therefore, 
+            in order to prevent health complications related to the formation of thrombosis and advance the development of 
+            biomedical tools for minimally-invasive procedures, the MicroBot is the optimal choice.  [add citations]
+        </p>
+        <p>
+            Consequently, we plan to approach this biological problem by implementing multiple BIOL300 and BIOL301 concepts 
+            within our project portfolio. In the initial phase of the project, we will collect videos in TIF format of a 
+            MicroBot translating in a straight line across a microscopic gasket. Using the contrast within the photo, we 
+            will perform image analysis on the frames of the video by thresholding and median filtering each image to locate 
+            the bot and track its motion to model a differential equation for the bot’s velocity. The “skimage” python module
+            will be the primary image analysis tool, and the resultant velocity model will then be plotted to generate 
+            interactive graphs with the “holoviews” and “bokeh” modules. In the final phase of the project, the image analysis 
+            code will be paired with the parametrized velocity equation to generate graphs with sliders containing both the 
+            actual and projected/predicted trajectories of the MicroBot. By changing the sliders, the varying paths of the 
+            MicroBot can be visualized under differing conditions associated with the velocity equation. In theory, this will 
+            provide physicians or scientists a tool they can use to visualize the path of a MicroBot within the human 
+            circulatory system to plan out their approach for the surgical removal of a blood clot.
+        </p>
+        <div class="button-container right">
+            <a href="data_collection.html" class="button">Proceed to Data Collection ►</a>
+        </div>
+    </div>
+</body>
+</html>
