@@ -627,6 +627,50 @@ plt.legend(["Predicted Trajectory", "Actual Path"]);</code></pre>
     <img src="static/images/PredictedvsActual25mT.png" alt="Predicted vs. Actual Path of MicroBot (25 mT) using Logistic Model">
 </div>
 <p>As you can see, the new logistic model matrches very closely with the actual path of the robot. Moving forward, the functions we utilize to plot MicroBot trajectories will rely on this logistic model to predict the translational behavior of the MicroBot over time. The plot_actual_function below, for example, is designed to input a starting pair of X and Y coordinates associated with the starting position of the MicroBot on the X-Y plane and use the predict_logistic_from_centroids function to create an interactive slider plot with respect to the field strength, angle of motion, and the time. The purpose of this function is to predict the trajectory of the MicroBot without referencing its actual path along a plot that can be dynamically updated by toggling the sliders. The linear path produced by the function will act as a starting point for predicting more-complex MicroBot paths down the road. Below, we have also included an example output of the function to demonstrate the trajectory of a MicroBot starting at the position (0,0).</p>
+<pre><code class="language-python">def predict_logistic(x0_y0, B, path_skew, out_len):
+    """Given an initial position, field strength, skew, and length, returns a list of centroids
+    predicting the path of the microbot. (list)"""
+    path_skew = np.radians(path_skew)
+    prediction = np.empty((out_len, 2))
+    prediction[0] = x0_y0
+
+    for i in range(len(prediction)-1):
+        velocity = 1.231510719 / (1 + 20.66319666*np.exp(-0.2509096863*B))
+        dx = np.cos(path_skew) * velocity
+        
+        dy = np.sin(path_skew) * velocity
+        
+        prediction[i+1][1] = (prediction[i][1]) + dy
+        prediction[i+1][0] = (prediction[i][0]) + dx
+    return prediction
+
+def plot_actual_prediction(initial_condition):
+    """Given a centroid list, and B, plots the microbot position, microbot path, and predicted path with
+    sliders for frame and mu. (plot)"""
+    field_slider = pn.widgets.FloatSlider(name="field (mT)", start=5, end=40, step=1)
+    angle_slider = pn.widgets.FloatSlider(name="angle (deg)", start=0, end=359, step=0.1)
+    time_slider = pn.widgets.FloatSlider(name="time (s)", start=100, end=1000, step=1, value=100)
+
+    @pn.depends(field_slider.param.value, angle_slider.param.value, time_slider.param.value)
+    def slider_plotter(field, angle, time):
+        # Compute our x and y values
+        prediction = predict_logistic(initial_condition, field, angle, time)
+        # Specify the list of y vs. x plots we want
+        list_of_curves = [hv.Curve(prediction)]
+        
+        # Add labels and title
+        return hv.Overlay(list_of_curves).opts(
+            ylim=(-1000, 1000),
+            xlim=(-1000, 1000),
+            xlabel="Predicted X Position",  # Add X axis label
+            ylabel="Predicted Y Position",  # Add Y axis label
+            title="Predicted Trajectory Using Logistic Model",  # Add title
+            show_grid=True,
+            width=400,
+            height=300
+        )
+
+    return pn.Column(slider_plotter, field_slider, angle_slider, time_slider)</code></pre>
 <div class="output-box">
     <p>Output:</p>
     <iframe src="bokeh_logistic_trajectory.html" width="900" height="750" frameborder="0"></iframe>
