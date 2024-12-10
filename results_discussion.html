@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">MicroBot Project</div>
+            <div class="dropdown">
+                <a href="#">Sections ▼</a>
+                <div class="dropdown-menu">
+                    <a href="index.html">Introduction</a>
+                    <a href="data_collection.html">Data Collection</a>
+                    <a href="implementation.html">Implementation & Code Results</a>
+                    <a href="results_discussion.html">Results & Discussion</a>
+                    <a href="next_steps.html">Next Steps</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Results & Discussion</h1>
+        <p>The use of micro-scale technology is an emerging field that presents useful applications in areas ranging from biomedical and biological engineering to environmental science. Throughout the course of the semester, our group was able to successfully program and execute a usable computational tool for the analysis, modeling, and extrapolation of trajectory data from superparamagnetic colloidal particles. These particles, once actuated with an external magnetic field, form MicroBots that can be used for minimally-invasive surgery within the tortuous environments of the human cardiovascular system.</p>
+        <p>In order to program a usable code for the real-world implementation of these MicroBots, the first aim of our project sought to perform image analysis on a series of MicroBot translation videos to determine the velocity of the robots with respect to a usable model equation. The first step of this goal entailed the creation of a series of functions that thresholded TIFF image files from each translation video, median filtered the MicroBot using its darker contrast against a white background, and interpreted each robot as a singular centroid over time. This first portion of our code reflects changes we made in response to peer feedback. Specifically, we noticed that by originally running the code utilizing the raw TIFF-format frames, the sheer amount of data took too long for the program to execute. In order to account for the relatively slower run time of this program, we implemented the use of centroid-oriented data that compacted the data extracted from each TIFF frame into a smaller set of X and Y coordinates. This reduced the overall run time of the image analysis portion of the code to only 3 to 5 minutes. Consequently, this step was successfully programmed as demonstrated by the plotted centroid paths of the MicroBots under magnetic field strengths of 20, 25, 30, and 35 mT. This result was crucial to the image analysis portion of the code because it demonstrated that the MicroBots, in vitro, could be tracked using image analysis software. Within the context of a real-world surgical operation, the capacity to track the MicroBots as they are magnetically actuated throughout the human body is incredibly important for visualizing the real-time location of each robot in relation to the site of a clot or thrombosis that needs to be targeted and lysed. The efficacy of our centroid path plot was also compared to the real video of a MicroBot moving under 20 mT field strength conditions. Given that both the centroid plot and the real MicroBot moved in a somewhat linear path across the screen, we were able to confirm the accuracy of our image analysis program.</p>
+        <p>After successfully determining both the coordinates of the MicroBot centroids and the paths of each MicroBot in each of the magnetic field strength videos, the program then used a series of functions to calculate the average velocity of the MicroBots in each video. This allowed us to determine the total velocities of the MicroBots, which were each in the range of roughly 6.829 microns per second. This was a result we expected because we knew the MicroBots themselves were roughly 4.5 microns in diameter, so a translational velocity in the same realm allowed us to determine the velocity function was successful. With a means of measuring the changes in velocity exhibited by the MicroBot in relation to changes in magnetic field strength, we then modeled a linear velocity equation 𝑣=𝜇𝐵. An important result we extrapolated from this result was that there was a direct positive correlation between the translational velocity and the magnetic field strength of the MicroBots where greater field strength produced greater overall velocities. This makes sense because the MicroBots themselves “roll” across the videos we analyze, so increases in the magnetic force imposed on each robot would naturally increase the torque applied to each MicroBot to increase their rate of linear translation.</p>
+        <p>From there, the second aim of our project sought to use the parameterized equation we modeled to plot predicted trajectories for the MicroBots. This has important real-world applications for clinical use in the operating room where surgeons can create a “plan of approach” to non-invasive surgery before beginning the operation. Therefore, the first step for achieving this goal entailed the creation of a prediction and plot_prediction function to use the parameterized equation, 𝑣=𝜇𝐵, for extrapolating the coordinates of the MicroBots under varying field strengths and 𝜇 constant values. As shown in our code, the plot of the predicted trajectories of the MicroBot under 35 mT field strength conditions successfully demonstrates the impact of changing the 𝜇 parameters with respect to time. A linear trajectory of the MicroBot matches fairly well with the actual path of the MicroBot video, proving the efficacy of the prediction model in conforming to the true behavior of the MicroBot.</p>
+        <p>However, while our linear prediction model was very close to matching the true behavior of the MicroBot’s translation, the feedback we received from peers prompted us to pursue a different equation model to get even better results. In turn, the ideal predictive model would exhibit even less deviation from the actual path of the MicroBot. Our choice of model for this new predictive equation was a logistic graph based on the equation:</p>
+        <center><img src="static/images/logistic_equation.png" alt="Logistic Equation" width="313" height="50"></center>
+        <p>To reprogram our code to adjust for the new logistic trajectory model, we created a function that predicted the path of the MicroBot using the centroids we traced earlier in our project. This allowed us to successfully plot a graph of the predicted vs. the actual path of the MicroBot under 25 mT field strength conditions. As seen in the graph, the actual path of the MicroBot is nearly identical to the predicted trajectory we extrapolated using the logistic equation, which enabled us to conclude that this new logistic model was more effective at predicting the paths of the MicroBots than the linear equation.</p>
+        <p>In the final stage of our project, the logistic equation model we found and the series of functions that predicted the path of the Microbot from this equation were employed to predict more-complex MicroBot paths. This makes sense from a real-world standpoint because the arteries and veins of the human cardiovascular system are extremely complex and nonlinear, so creating a computational pipeline for plotting complex trajectories is crucial if the technology is to be applied in-vivo. Therefore, the final functions of our code successfully plot complex MicroBot paths using coordinate information inputted as arrays. This allowed us to generate a logistic-based program for shaping paths such as spirals, rectangles, and triangles. As demonstrated by the final plot, the accurate trajectory formation of each of these complex shapes and figures proves that our code can be implemented for the precise modeling of MicroBot motion in microscopic environments. In conclusion, this software has the capacity to aid physicians and surgeons in approaching complex cardiovascular operations by modeling and predicting the motion of biomedical MicroBots for lysing life-threatening blood clots.</p>
+        <div class="button-row">
+            <div class="button-container left">
+                <a href="implementation.html" class="button">◄ Back to Implementation & Code Results</a>
+            </div>
+            <div class="button-container right">
+                <a href="next_steps.html" class="button">Proceed to Next Steps ►</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

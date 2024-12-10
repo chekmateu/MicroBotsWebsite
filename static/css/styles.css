@@ -4,16 +4,62 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
-    padding: 60px;
+    padding: 60;
+    padding-top: 40px;
     color: #333;
 }
 
 .container {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.output-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    background-color: #f5f2f0;
+    font-family: 'Ubuntu Mono', monospace;
+    text-shadow: 0 1px #fff;
+    font-size: 14px;
+    color: #000000;
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+.scrollable-code {
+    max-height: 400px; /* Set a maximum height for the code block */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 0; /* Remove extra padding */
+    margin: 0; /* Remove any extra margin */
+    background: none; /* Make the background invisible */
+    border: none; /* Remove the border */
+    box-shadow: none; /* Remove the shadow */
+    line-height: 1.5; /* Ensure consistent line spacing */
+  }
+  
+/* Ensure pre and code elements don’t introduce extra spacing */
+.scrollable-code pre,
+.scrollable-code code {
+margin: 0;
+padding: 0;
+}
+
+/* Optional: Customize the scrollbar appearance */
+.scrollable-code::-webkit-scrollbar {
+width: 6px; /* Adjust scrollbar width */
+}
+
+.scrollable-code::-webkit-scrollbar-thumb {
+background: #ccc; /* Style the scrollbar thumb */
+border-radius: 3px; /* Round scrollbar thumb edges */
+}
+
+.scrollable-code::-webkit-scrollbar-thumb:hover {
+background: #888; /* Change thumb color on hover */
 }
 
 h1 {
